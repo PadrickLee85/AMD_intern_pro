@@ -1,0 +1,450 @@
+Date: Fri, 5 Jul 2024 02:09:29 -0400 (EDT)
+Message-ID: <1795306635.612460.1720159769258@atlvconfprd2.amd.com>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_612459_1633771784.1720159769255"
+
+------=_Part_612459_1633771784.1720159769255
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Autoregressive Model Beats Diffusion: Llama for Scalable Image G=
+eneration (LlamaGen)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Autoregressive Model Beats Diffusion: Llama for Scalable Image Gene=
+ration (LlamaGen)</h1>
+    <div class=3D"Section1">
+        <h2 id=3D"AutoregressiveModelBeatsDiffusion:LlamaforScalableImageGe=
+neration(LlamaGen)-1.=E8=AE=BA=E6=96=87=E5=B7=A5=E4=BD=9C=E5=86=85=E5=AE=B9=
+">1.&nbsp;=E8=AE=BA=E6=96=87=E5=B7=A5=E4=BD=9C=E5=86=85=E5=AE=B9</h2>
+<h3 style=3D"margin-left: 40.0px;" id=3D"AutoregressiveModelBeatsDiffusion:=
+LlamaforScalableImageGeneration(LlamaGen)-=E6=80=BB=E4=BD=93=E6=9D=A5=E7=9C=
+=8B=EF=BC=8C=E6=96=87=E7=AB=A0=E7=9A=84=E8=A6=81=E7=82=B9=E6=80=BB=E7=BB=93=
+=EF=BC=9A">=E6=80=BB=E4=BD=93=E6=9D=A5=E7=9C=8B=EF=BC=8C=E6=96=87=E7=AB=A0=
+=E7=9A=84=E8=A6=81=E7=82=B9=E6=80=BB=E7=BB=93=EF=BC=9A</h3>
+<ul>
+<li style=3D"list-style-type: none;">
+<ul>
+<li>=E4=B8=80=E7=A7=8D=E6=9B=B4=E4=BC=98=E7=9A=84 <strong><span style=3D"co=
+lor: rgb(255,0,0);">Image tokenizer</span></strong>, =EF=BC=88=E5=BD=93=E5=
+=85=B6=E4=B8=8B=E9=87=87=E6=A0=B7=E6=AF=94=E4=BE=8B=E4=B8=BA16=E6=97=B6=EF=
+=BC=8C<strong><span style=3D"color: rgb(255,0,0);">codebook=E7=9A=84=E5=88=
+=A9=E7=94=A8=E7=8E=87=E8=BE=BE=E5=88=B0=E4=BA=8697%</span></strong>=EF=BC=
+=89=EF=BC=8C=E5=85=B7=E4=BD=93=E7=9A=84=E8=AE=BE=E8=AE=A1=E5=AD=A6=E4=B9=A0=
+=E4=BA=86 VQ-GAN=E4=B8=AD=E7=9A=84encoder-quantizer-decoder =E6=A8=A1=E5=BC=
+=8F=EF=BC=8C=E5=85=B7=E4=BD=93=E8=AE=BE=E8=AE=A1=E7=9A=84=E6=97=B6=E5=80=99=
+=EF=BC=9A<span style=3D"color: rgb(255,0,0);"><u>codebook=E7=9A=84=E5=90=91=
+=E9=87=8F=E7=BB=B4=E5=BA=A6=E5=BE=88=E5=B0=8F=EF=BC=8Ccodebook size =E8=AE=
+=BE=E7=BD=AE=E7=9A=84=E5=BE=88=E5=A4=A7</u></span>=EF=BC=9B</li>
+<li><strong><span style=3D"color: rgb(255,0,0);">Scalable image generation =
+model</span></strong>=EF=BC=8C=E5=85=B7=E4=BD=93=E5=B0=B1=E6=98=AF<strong><=
+span style=3D"color: rgb(255,0,0);">Llama=E6=9E=B6=E6=9E=84</span></strong>=
+=EF=BC=8C=E8=AF=81=E5=AE=9E=E4=BA=86<strong><span style=3D"color: rgb(255,0=
+,0);">=E4=B8=8D=E6=B7=BB=E5=8A=A0=E8=A7=86=E8=A7=89=E4=BF=A1=E6=81=AF=E5=BD=
+=92=E7=BA=B3=E5=81=8F=E7=BD=AE=E7=9A=84=E5=8E=9F=E7=94=9F=E8=87=AA=E5=9B=9E=
+=E5=BD=92=E6=A8=A1=E5=9E=8B</span></strong>=E4=B9=9F=E5=8F=AF=E5=9C=A8=E5=
+=9B=BE=E5=83=8F=E7=94=9F=E6=88=90=E4=B8=ADwork=EF=BC=9B</li>
+<li><strong><em><span style=3D"color: rgb(255,0,0);">High-quality training =
+data=EF=BC=8C</span></em></strong>=E5=85=B7=E4=BD=93=EF=BC=9A=E5=85=88=E5=
+=9C=A8LAION-COCO=E4=B8=8A50M=E7=9A=84=E5=AD=90=E6=95=B0=E6=8D=AE=E9=9B=86=
+=E4=B8=8A=E8=AE=AD=E7=BB=83=E4=B8=80=E4=B8=AA775M=E7=9A=84text-conditional=
+=E5=9B=BE=E5=83=8F=E7=94=9F=E6=88=90=E6=A8=A1=E5=9E=8B=EF=BC=8C=E7=84=B6=E5=
+=90=8E=E5=9C=A8<strong><em><span style=3D"color: rgb(255,0,0);">10M=E7=A7=
+=81=E6=9C=89=E7=9A=84=E9=AB=98=E8=B4=A8=E9=87=8F=E5=9B=BE=E7=89=87=E6=95=B0=
+=E6=8D=AE=E4=B8=8A=E8=BF=9B=E8=A1=8C=E5=BE=AE=E8=B0=83</span></em></strong>=
+=EF=BC=9B=EF=BC=88=E5=8F=AF=E8=83=BD=E5=9C=A8=E5=90=8E=E7=BB=AD=E7=9A=84=E5=
+=AF=B9=E6=AF=94=E4=B8=AD=EF=BC=8C=E8=BF=99=E4=B9=9F=E6=98=AF227M=E7=9A=84 V=
+QGAN =E4=B8=8E111M=E7=9A=84 LlamaGen =E7=9B=B8=E5=B7=AE=E5=A4=AA=E5=A4=9A=
+=E7=9A=84=E5=8E=9F=E5=9B=A0=EF=BC=9F=E4=B8=8D=E7=A1=AE=E5=AE=9A=E6=98=AF=E5=
+=90=A6=E5=8F=AA=E6=98=AF=E5=9C=A8benchmark=E4=B8=8A=E5=AF=B9=E6=AF=94=E4=BD=
+=86=E8=AE=AD=E7=BB=83=E6=96=B9=E5=BC=8F=E4=B8=8D=E4=B8=80=E6=A0=B7=E3=80=82=
+=EF=BC=89</li>
+<li><strong><span style=3D"color: rgb(255,0,0);">=E4=BD=BF=E7=94=A8vLLM=E6=
+=A1=86=E6=9E=B6=E5=8A=A0=E9=80=9F=E6=8E=A8=E7=90=86=E9=80=9F=E5=BA=A6</span=
+>=E3=80=82</strong></li>
+</ul></li>
+</ul>
+<p style=3D"margin-left: 40.0px;"><strong>=E5=85=B7=E4=BD=93=E7=9C=8B image=
+ tokenizer=E7=9A=84=E8=AE=BE=E8=AE=A1=EF=BC=9A</strong></p>
+<p style=3D"margin-left: 80.0px;">=E8=AE=BA=E6=96=87=E4=B8=AD=E5=85=B7=E4=
+=BD=93=E9=98=90=E9=87=8A=E4=BA=86 LlamaGen =E7=9A=84tokenizer=E8=AE=BE=E8=
+=AE=A1=EF=BC=8C=E5=85=B6=E5=AE=9E<span style=3D"color: rgb(255,0,0);"><u>=
+=E6=95=B4=E4=B8=AA=E8=AE=BE=E8=AE=A1=E7=9A=84=E6=B5=81=E7=A8=8B=E5=B7=B2=E7=
+=BB=8F=E6=8D=9F=E5=A4=B1=E5=87=BD=E6=95=B0=E7=9A=84=E7=BA=A6=E6=9D=9F=E9=83=
+=BD=E8=B7=9FVQ-GAN=E4=B8=80=E8=87=B4</u></span>=EF=BC=8C=E6=98=8E=E6=98=BE=
+=E5=B7=AE=E5=BC=82=E5=A4=84=E5=9C=A8=EF=BC=9ALlamaGen =E7=9A=84<strong><spa=
+n style=3D"color: rgb(255,0,0);">codebook=E7=9A=84=E7=BB=B4=E5=BA=A6=E5=BE=
+=88=E5=B0=8F</span></strong>=EF=BC=888=EF=BC=89=EF=BC=8C<strong><span style=
+=3D"color: rgb(255,0,0);">=E5=B0=BA=E5=AF=B8=E5=BE=88=E5=A4=A7</span></stro=
+ng>=EF=BC=8C=E6=9F=90=E7=A7=8D=E7=A8=8B=E5=BA=A6=E4=B8=8A<strong><span styl=
+e=3D"color: rgb(255,0,0);">=E8=A7=A3=E5=86=B3=E4=BA=86 VQVAE=E4=B8=AD=E7=BC=
+=96=E7=A0=81=E8=A1=A8=E5=9D=8D=E5=A1=8C=E9=97=AE=E9=A2=98</span></strong>=
+=EF=BC=88=E7=BC=96=E7=A0=81=E8=A1=A8=E5=A2=9E=E5=A4=A7=E6=97=B6=EF=BC=8C=E7=
+=BC=96=E7=A0=81=E8=A1=A8=E5=B9=B6=E6=B2=A1=E6=9C=89=E8=A2=AB=E5=85=85=E5=88=
+=86=E5=88=A9=E7=94=A8=E8=B5=B7=E6=9D=A5=EF=BC=8C=E5=8F=8D=E8=80=8C=E7=94=B1=
+=E4=BA=8E=E6=81=B6=E6=80=A7=E7=AB=9E=E4=BA=89=E5=AF=BC=E8=87=B4=E7=BC=96=E7=
+=A0=81=E8=A1=A8=E8=81=9A=E9=9B=86=E5=88=B0=E4=B8=80=E5=9D=97=E3=80=82=EF=BC=
+=89</p>
+<p style=3D"margin-left: 40.0px;"><strong>Autoregressive Models =E5=AE=9E=
+=E7=8E=B0Image Generation=E7=9A=84=E6=80=9D=E8=B7=AF=EF=BC=9A</strong></p>
+<ul>
+<li style=3D"list-style-type: none;">
+<ul>
+<li><em><strong>Class-conditional image generation</strong></em></li>
+</ul></li>
+</ul>
+<p style=3D"margin-left: 80.0px;"><em><span style=3D"color: rgb(255,0,0);">=
+<strong>=E7=BB=B4=E6=8A=A4=E5=8F=AF=E5=AD=A6=E4=B9=A0=E7=9A=84 embeddings</=
+strong></span></em> =EF=BC=8C=E4=BB=8E=E4=B8=AD=E7=B4=A2=E5=BC=95=E5=87=BA =
+<em><strong><span style=3D"color: rgb(255,0,0);">=E5=85=B7=E4=BD=93class em=
+bedding =E4=BD=9C=E4=B8=BA prefilling token embedding </span></strong></em>=
+(Autoregressive =E7=9A=84=E7=AC=AC -1 =E4=B8=AAToken)=EF=BC=8C=E6=8E=A5=E4=
+=B8=8B=E6=9D=A5=E5=B0=B1=E6=98=AFnext-token prediction =E6=A8=A1=E5=BC=8F=
+=E6=9D=A5=E5=81=9A=E7=94=9F=E6=88=90=EF=BC=9B</p>
+<ul>
+<li style=3D"list-style-type: none;">
+<ul>
+<li><strong><em>Text-conditional image generation</em></strong></li>
+</ul></li>
+</ul>
+<p style=3D"margin-left: 80.0px;">=E4=B8=8D=E5=90=8C=E4=BA=8E=E5=A6=82 Stab=
+le Diffusion =E7=AD=89=E6=A8=A1=E5=9E=8B=E5=8A=A0=E5=85=A5 Text-condition =
+=E7=9A=84=E6=A8=A1=E5=BC=8F=EF=BC=88=E9=80=9A=E8=BF=87cross attention=E6=9D=
+=A5=E8=9E=8D=E5=90=88=E4=B8=8D=E5=90=8Cdomain =E7=9A=84=E4=BF=A1=E6=81=AF=
+=EF=BC=89=EF=BC=8C<strong><span style=3D"color: rgb(255,0,0);">Text conditi=
+on =E5=85=88=E9=80=9A=E8=BF=87 text encoder (CLIP/)=E8=8E=B7=E5=BE=97 text =
+feature</span></strong>, text feature =E9=80=9A=E8=BF=87<strong><span style=
+=3D"color: rgb(255,0,0);">=E9=A2=9D=E5=A4=96=E7=9A=84MLP=E6=98=A0=E5=B0=84=
+=E4=B8=BA</span></strong>Autoregressive models=E7=9A=84 <strong><span style=
+=3D"color: rgb(255,0,0);">prefilling Token</span></strong>=E3=80=82</p>
+<ul>
+<li style=3D"list-style-type: none;">
+<ul>
+<li><strong><em>Classifier-free guidance</em></strong></li>
+</ul></li>
+</ul>
+<p style=3D"margin-left: 80.0px;"><span style=3D"color: rgb(255,0,0);"><str=
+ong>=E8=AE=AD=E7=BB=83</strong></span>=E8=BF=87=E7=A8=8B=E4=B8=AD=EF=BC=8C<=
+strong><span style=3D"color: rgb(255,0,0);">=E6=9D=A1=E4=BB=B6=E4=BF=A1=E6=
+=81=AF</span></strong>=E8=A2=AB<span style=3D"color: rgb(255,0,0);"><strong=
+>=E9=9A=8F=E6=9C=BA drop</strong></span> =E5=B9=B6=E8=A2=AB<strong><span st=
+yle=3D"color: rgb(255,0,0);">=E6=9B=BF=E6=8D=A2=E4=B8=BA unconditional=E7=
+=9A=84embedding</span></strong>=EF=BC=9B<strong><span style=3D"color: rgb(2=
+55,0,0);">=E6=8E=A8=E7=90=86</span></strong>=E6=97=B6=EF=BC=8C<strong><span=
+ style=3D"color: rgb(255,0,0);">=E6=AF=8F=E4=B8=80=E4=B8=AAtoken=E7=9A=84lo=
+gits=E5=80=BC</span></strong><span style=3D"color: rgb(255,0,0);"><u>=E7=94=
+=B1=E6=9D=A1=E4=BB=B6=E7=BA=A6=E6=9D=9F=E4=B8=8B=E7=9A=84logits(c)</u></spa=
+n>=E5=92=8C<span style=3D"color: rgb(255,0,0);"><u>=E6=97=A0=E6=9D=A1=E4=BB=
+=B6=E7=BA=A6=E6=9D=9F=E4=B8=8B=E7=9A=84logits(u)</u></span>=E4=BB=A5<span s=
+tyle=3D"color: rgb(255,0,0);"><u>scale=E5=8F=82=E6=95=B0=E7=BA=BF=E6=80=A7=
+=E7=BB=84=E5=90=88</u></span>=E3=80=82</p>
+<p><br></p>
+<h2 id=3D"AutoregressiveModelBeatsDiffusion:LlamaforScalableImageGeneration=
+(LlamaGen)-2.=E6=80=9D=E8=80=83=E6=95=B4=E7=90=86">2. =E6=80=9D=E8=80=83=E6=
+=95=B4=E7=90=86</h2>
+<p style=3D"margin-left: 40.0px;"><strong>=E9=A6=96=E5=85=88=E6=9C=80 inter=
+esting =E7=9A=84=E7=82=B9=E5=9C=A8=E4=BA=8E =E5=85=B6 image tokenizer =E7=
+=9A=84=E8=AE=BE=E8=AE=A1</strong></p>
+<ol>
+<li style=3D"list-style-type: none;">
+<ol>
+<li>=E8=AF=81=E5=AE=9E=E4=BA=86<strong><span style=3D"color: rgb(255,0,0);"=
+>=E7=A6=BB=E6=95=A3=E8=A1=A8=E5=BE=81</span></strong>=E7=9A=84=E6=96=B9=E5=
+=BC=8F=E6=98=AF<strong><span style=3D"color: rgb(255,0,0);">=E5=8F=AF=E4=BB=
+=A5 scale up</span></strong>=E7=9A=84=EF=BC=88=E5=85=B6=E5=AE=9E=E4=B9=9F=
+=E5=B0=B1=E6=98=AFcodebook=E5=A2=9E=E5=A4=A7=E5=90=8E=E4=B8=8D=E4=BC=9A=E5=
+=87=BA=E5=85=88=E7=81=BE=E9=9A=BE=E6=80=A7=E7=9A=84codebook=E5=9D=8D=E5=A1=
+=8C=EF=BC=89</li>
+<li>=E7=9C=8B=E5=85=B7=E4=BD=93=E7=9A=84=E8=AE=BE=E8=AE=A1 =E6=84=9F=E8=A7=
+=89=E8=B7=9FVQGAN=E7=AD=89=E7=9A=84=E5=B7=AE=E5=BC=82=E6=80=A7=E4=B8=BB=E8=
+=A6=81=E4=BD=93=E7=8E=B0=E5=9C=A8 =E6=9C=AC=E4=BD=9C=E7=9A=84<strong><span =
+style=3D"color: rgb(255,0,0);">codebook=E4=B8=ADtoken=E7=9A=84=E7=BB=B4=E5=
+=BA=A6=E5=B0=8F=EF=BC=888=EF=BC=8C=E5=AF=B9=E6=AF=94VQGAN=E4=B8=BA256=EF=BC=
+=89</span></strong>=EF=BC=8C=E5=B0=BA=E5=AF=B8=E6=95=B0=E7=9B=AE=E5=A4=A7=
+=EF=BC=88=E4=BD=86=E6=9C=89=E6=95=88=E5=88=A9=E7=94=A8=E7=8E=87=E4=B8=BA97%=
+=EF=BC=89=E3=80=82=E8=BF=99=E9=87=8C=E5=9C=A8=E6=80=9D=E8=80=83=E6=98=AF=E5=
+=90=A6=E5=8E=9F=E6=9C=AC=E9=AB=98=E7=BB=B4=E7=A9=BA=E9=97=B4=E4=B8=8B=E5=87=
+=BA=E7=8E=B0=E7=9A=84=E6=81=B6=E8=A1=8C=E8=81=9A=E9=9B=86=E6=83=85=E5=86=B5=
+=EF=BC=8C=E5=85=B6=E6=89=80=E8=81=9A=E9=9B=86=E7=9A=84=E5=8C=BA=E5=9F=9F=E5=
+=85=B6=E5=AE=9E=E5=B0=B1=E6=98=AF=E5=BD=93=E4=B8=8B=E5=AD=A6=E4=B9=A0=E5=88=
+=B0=E7=9A=84=E8=BF=99=E4=B8=AA=E7=A9=BA=E9=97=B4=E7=BB=B4=E5=BA=A6=E5=8F=AA=
+=E6=9C=898=E7=9A=84=E7=A9=BA=E9=97=B4=E5=91=A2=EF=BC=9F=E9=82=A3=E6=98=AF=
+=E5=90=A6=E8=B7=9F=E6=95=B0=E6=8D=AE=E7=B1=BB=E5=9E=8B=E8=B4=A8=E9=87=8F=E7=
+=AD=89=E6=8C=82=E9=92=A9=EF=BC=8C=E4=BB=A5=E5=8F=8A=E8=BF=99=E4=B8=AA=E7=A9=
+=BA=E9=97=B4=E7=9A=84=E7=BB=B4=E5=BA=A6=E4=B9=9F=E4=BC=9A=E9=9A=8F=E7=9D=80=
+=E4=B8=8D=E5=90=8C=E6=95=B0=E6=8D=AE=E7=B1=BB=E5=9E=8B=E8=80=8C=E9=87=8D=E6=
+=96=B0=E5=8E=BB=E6=8E=A2=E7=B4=A2=E6=9C=80=E4=BD=B3=E7=9A=84dim?</li>
+<li>=E5=85=B7=E4=BD=93=E7=9A=84=E4=B8=80=E4=BA=9B=E8=AE=BE=E8=AE=A1=E5=8F=
+=AF=E8=83=BD=E9=9C=80=E8=A6=81<strong><span style=3D"color: rgb(255,0,0);">=
+=E7=BB=93=E5=90=88=E4=BB=A3=E7=A0=81</span></strong>=E5=8E=BB=E7=9C=8B=EF=
+=BC=8C=E6=9A=82=E6=97=B6=E8=BF=98=E6=9C=AA=E5=8E=BB=E7=9C=8B=EF=BC=8C=E6=B7=
+=BB=E5=8A=A0=E5=88=B0to-do-list=E4=B8=AD=E3=80=82=EF=BC=88<span style=3D"co=
+lor: rgb(255,0,255);"><u><strong>TODO</strong></u></span>=EF=BC=89</li>
+</ol></li>
+</ol>
+<p style=3D"margin-left: 40.0px;"><strong>=E5=85=B3=E4=BA=8E=E8=87=AA=E5=9B=
+=9E=E5=BD=92=E6=A8=A1=E5=9E=8B=E5=8E=BB=E8=BF=9B=E8=A1=8C=E5=9B=BE=E5=83=8F=
+=E7=94=9F=E6=88=90=E7=9A=84=E6=96=B9=E5=BC=8F</strong></p>
+<ol>
+<li style=3D"list-style-type: none;">
+<ol>
+<li>=E6=9C=AC=E4=BD=9C=E4=B8=AD=E4=BD=BF=E7=94=A8=E8=87=AA=E5=9B=9E=E5=BD=
+=92=E6=A8=A1=E5=9E=8B=E5=8E=BB=E5=81=9A=E5=9B=BE=E5=BD=A2=E7=94=9F=E6=88=90=
+=EF=BC=8C=E5=85=B7=E4=BD=93=E7=9A=84=E8=8C=83=E5=BC=8F=E9=83=BD=E6=98=AF=E5=
+=B0=86<strong><span style=3D"color: rgb(255,0,0);">condition=E4=BF=A1=E6=81=
+=AF=E4=BD=9C=E4=B8=BAprefilling token </span></strong>=E5=8E=BB=E5=BC=95=E5=
+=AF=BC=E6=8E=A5=E4=B8=8B=E6=9D=A5=E7=9A=84=E7=94=9F=E6=88=90=EF=BC=8C=E4=B8=
+=BB=E8=A7=82=E4=B8=8A=E6=88=91=E4=B8=8D=E7=A1=AE=E5=AE=9A=E8=BF=99=E7=A7=8D=
+=E6=96=B9=E5=BC=8F<strong><span style=3D"color: rgb(255,0,0);">=E6=98=AF=E5=
+=90=A6=E5=8F=AF=E4=BB=A5=E8=BF=9B=E8=A1=8C=E5=85=85=E5=88=86=E7=9A=84 condi=
+tion=E4=BF=A1=E6=81=AF=E5=88=A9=E7=94=A8</span></strong>=EF=BC=8C=E4=BB=A5=
+=E5=8F=8A<strong><span style=3D"color: rgb(255,0,0);">=E4=BF=A1=E6=81=AF=E7=
+=9A=84=E5=88=A9=E7=94=A8=E6=98=AF=E5=90=A6=E5=8F=AF=E4=BB=A5=E8=A7=A3=E8=80=
+=A6=E5=8F=AF=E6=8E=A7</span></strong>=EF=BC=8C=E6=98=AF=E5=90=A6=E6=9C=89=
+=E5=85=B6=E4=BB=96=E6=96=B9=E6=B3=95=EF=BC=9F</li>
+<li>=E5=85=B3=E4=BA=8E=E8=87=AA=E5=9B=9E=E5=BD=92=E5=BC=8F=E7=9A=84=E7=94=
+=9F=E6=88=90=E6=A8=A1=E5=9E=8B=EF=BC=8C=E4=B9=8B=E5=89=8D=E5=8F=88=E7=9C=8B=
+=E5=88=B0 T2M-GPT =E4=B9=9F=E6=98=AF=E4=BD=BF=E7=94=A8=E8=BF=99=E7=A7=8D=E8=
+=87=AA=E5=9B=9E=E5=BD=92=E6=96=B9=E5=BC=8F=E5=8E=BB=E5=81=9AMotion=E7=94=9F=
+=E6=88=90=EF=BC=8C=E4=BD=86=E6=9C=AC=E8=B4=A8=E4=B8=8A=E4=BD=BF=E7=94=A8=E7=
+=9A=84=E8=BF=98=E6=98=AF=E5=8E=9F=E7=94=9F=E7=9A=84 VQ-VAE=EF=BC=8C=E4=B8=
+=8D=E7=9F=A5=E9=81=93=E8=BF=99=E7=AF=87=E6=96=87=E7=AB=A0<em><strong><span =
+style=3D"color: rgb(255,0,0);">=E6=98=AF=E5=90=A6=E5=8F=AF=E4=BB=A5=E8=BF=
+=9B=E8=A1=8C=E4=B8=80=E4=B8=AA=E7=A0=94=E7=A9=B6=E7=9A=84=E5=90=AF=E5=8F=91=
+=EF=BC=9A=E5=AF=BB=E6=89=BE=E4=B8=80=E4=B8=AA=E6=9B=B4=E5=A5=BD=E7=9A=84 Mo=
+tion tokenizer</span></strong></em>=EF=BC=9F</li>
+</ol></li>
+</ol>
+<p style=3D"margin-left: 80.0px;"><br></p>
+<p style=3D"margin-left: 40.0px;"><br></p>
+<p style=3D"margin-left: 40.0px;"><br></p>
+<p style=3D"margin-left: 40.0px;"><br></p>
+<p style=3D"margin-left: 40.0px;"><br></p>
+<p style=3D"margin-left: 40.0px;"><br></p>
+<p style=3D"margin-left: 40.0px;"><br></p>
+<p style=3D"margin-left: 40.0px;"><br></p>
+<p style=3D"margin-left: 40.0px;"><br></p>
+    </div>
+</body>
+</html>
+------=_Part_612459_1633771784.1720159769255--
