@@ -1,0 +1,137 @@
+import numpy as np
+import argparse
+from models.vae import AutoencoderKL as VAE
+
+import torch
+import matplotlib.pyplot as plt
+from torchvision.utils import make_grid
+import torchvision.transforms as transforms
+
+
+parser = argparse.ArgumentParser(description="Example of argument parsing in Python")
+
+# Add arguments
+parser.add_argument("--data_folder", type=str, required=True, help="data folder to process")
+parser.add_argument("--out_folder", type=str, required=True, help="output folder to store results")
+parser.add_argument("--vae_path", type=str, default='.', help="path to vae weights")
+
+# Parse the arguments
+args = parser.parse_args()
+
+
+# 初始化VAE模型
+vae_model = VAE(
+    embed_dim=16, ch_mult=(1, 1, 2, 2, 4), ckpt_path=args.vae_path
+    )
+vae_model.cuda()
+
+
+with np.load("/root/qingfeli/data/imagenet_var_wo_vq/train/n01978287/n01978287_12360.JPEG.npz") as latent_features_list:
+    
+    latent_feature_tensor_0 = torch.from_numpy(latent_features_list['arr_0'])
+    latent_feature_tensor_1 = torch.from_numpy(latent_features_list['arr_1'])
+    latent_feature_tensor_2 = torch.from_numpy(latent_features_list['arr_2'])
+    latent_feature_tensor_3 = torch.from_numpy(latent_features_list['arr_3'])
+    latent_feature_tensor_4 = torch.from_numpy(latent_features_list['arr_4'])
+    latent_feature_tensor_5 = torch.from_numpy(latent_features_list['arr_5'])
+    latent_feature_tensor_6 = torch.from_numpy(latent_features_list['arr_6'])
+    latent_feature_tensor_7 = torch.from_numpy(latent_features_list['arr_7'])
+
+    rec_img_0 = vae_model.decode(latent_feature_tensor_0.cuda())
+    rec_img_1 = vae_model.decode(latent_feature_tensor_1.cuda())
+    rec_img_2 = vae_model.decode(latent_feature_tensor_2.cuda())
+    rec_img_3 = vae_model.decode(latent_feature_tensor_3.cuda())
+    rec_img_4 = vae_model.decode(latent_feature_tensor_4.cuda())
+    rec_img_5 = vae_model.decode(latent_feature_tensor_5.cuda())
+    rec_img_6 = vae_model.decode(latent_feature_tensor_6.cuda())
+    rec_img_7 = vae_model.decode(latent_feature_tensor_7.cuda())
+    
+    # 假设rec_img是VAE解码器的输出
+    # rec_img = vae_model.decode(latent_feature_tensor.cuda())
+    # 将张量移动到CPU并转换为NumPy数组
+
+    
+    rec_img_np_0 = rec_img_0.detach().squeeze(0)
+    rec_img_np_1 = rec_img_1.detach().squeeze(0)
+    rec_img_np_2 = rec_img_2.detach().squeeze(0)
+    rec_img_np_3 = rec_img_3.detach().squeeze(0)
+    rec_img_np_4 = rec_img_4.detach().squeeze(0)
+    rec_img_np_5 = rec_img_5.detach().squeeze(0)
+    rec_img_np_6 = rec_img_6.detach().squeeze(0)
+    rec_img_np_7 = rec_img_7.detach().squeeze(0)
+
+
+
+
+    # # 如果需要，规范化到[0, 1]范围
+    # if rec_img.max() > 1:
+    #     rec_img_np = rec_img_np / 2.0 + 0.5
+
+    rec_img_np_0 = transforms.ToPILImage(rec_img_np_0 * 0.5 + 0.5)
+    rec_img_np_1 = transforms.ToPILImage(rec_img_np_1 * 0.5 + 0.5)
+    rec_img_np_2 = transforms.ToPILImage(rec_img_np_2 * 0.5 + 0.5)
+    rec_img_np_3 = transforms.ToPILImage(rec_img_np_3 * 0.5 + 0.5)
+    rec_img_np_4 = transforms.ToPILImage(rec_img_np_4 * 0.5 + 0.5)
+    rec_img_np_5 = transforms.ToPILImage(rec_img_np_5 * 0.5 + 0.5)
+    rec_img_np_6 = transforms.ToPILImage(rec_img_np_6 * 0.5 + 0.5)
+    rec_img_np_7 = transforms.ToPILImage(rec_img_np_7 * 0.5 + 0.5)
+
+
+
+    # # 调整图像形状 (C, H, W) 到 (H, W, C)，其中C是通道数，H是高度，W是宽度
+    # rec_img_np_0 = rec_img_np_0.transpose(1, 2, 0)
+    # rec_img_np_1 = rec_img_np_1.transpose(1, 2, 0)
+    # rec_img_np_2 = rec_img_np_2.transpose(1, 2, 0)
+    # rec_img_np_3 = rec_img_np_3.transpose(1, 2, 0)
+    # rec_img_np_4 = rec_img_np_4.transpose(1, 2, 0)
+    # rec_img_np_5 = rec_img_np_5.transpose(1, 2, 0)
+    # rec_img_np_6 = rec_img_np_6.transpose(1, 2, 0)
+    # rec_img_np_7 = rec_img_np_7.transpose(1, 2, 0)
+
+
+
+    # 使用matplotlib显示图像
+    plt.figure(1)
+    plt.imshow(rec_img_np_0)
+    plt.axis('off')  # 不显示坐标轴
+
+    plt.figure(2)
+    plt.imshow(rec_img_np_1)
+    plt.axis('off')  # 不显示坐标轴
+
+    plt.figure(3)
+    plt.imshow(rec_img_np_2)
+    plt.axis('off')  # 不显示坐标轴
+
+    plt.figure(4)
+    plt.imshow(rec_img_np_3)
+    plt.axis('off')  # 不显示坐标轴
+
+    plt.figure(5)
+    plt.imshow(rec_img_np_4)
+    plt.axis('off')  # 不显示坐标轴
+
+    plt.figure(6)
+    plt.imshow(rec_img_np_5)
+    plt.axis('off')  # 不显示坐标轴
+
+    plt.figure(7)
+    plt.imshow(rec_img_np_6)
+    plt.axis('off')  # 不显示坐标轴
+
+
+
+
+
+
+
+    plt.show()
+
+# 或者，如果你生成了多个图像，可以使用make_grid来显示图像网格
+# 假设生成的图像张量的形状是[BATCH_SIZE, CHANNELS, HEIGHT, WIDTH]
+# rec_imgs_grid = make_grid(rec_img.unsqueeze(0), nrow=10, padding=2)
+# plt.imshow(np.transpose(rec_imgs_grid.cpu().numpy(), (1, 2, 0)))
+# plt.axis('off')
+# plt.show()
+
+
