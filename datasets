@@ -1,0 +1,46 @@
+import torch
+from torch.utils.data import Dataset
+import numpy as np
+import os
+
+class MyCustomDataset(Dataset):
+    def __init__(self, data_dir, transform=None):
+        self.data_dir = os.path.abspath(data_dir)  # 使用绝对路径提高兼容性
+        self.transform = transform
+        self.file_names = [f for f in os.listdir(data_dir) if f.endswith('.npz')]
+
+    def __len__(self):
+        return len(self.file_names)
+
+    def __getitem__(self, idx):
+        file_path = os.path.join(self.data_dir, self.file_names[idx])
+        try:
+            # 尝试加载npz文件
+            with np.load(file_path, allow_pickle=True) as data:
+                matrices = [data[arr_name] for arr_name in data.files]
+        except Exception as e:
+            print(f"加载文件 {file_path} 时发生错误: {e}")
+            return None  # 或者根据需要进行其他错误处理
+
+        if self.transform:
+            matrices = [self.transform(mat) for mat in matrices]
+
+        return matrices
+
+def to_tensor(x):
+    # 确保转换函数在不同设备上都能正常工作
+    return torch.tensor(x, dtype=torch.float32)  # 指定数据类型以避免类型不匹配问题
+
+# 创建数据集实例
+dataset = MyCustomDataset(data_dir='path_to_your_data', transform=to_tensor)
+
+# 创建DataLoader实例
+dataloader = torch.utils.data.DataLoader(dataset, batch_size=4, shuffle=True)
+
+# 使用DataLoader迭代数据集
+for batch in dataloader:
+    if batch is not None:
+        for i, tensor in enumerate(batch):
+            print(f"矩阵 {i} 的形状: {tensor.shape}")
+    else:
+        print("遇到错误，跳过此批次")
